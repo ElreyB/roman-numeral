@@ -8,6 +8,7 @@ var converterTable = {
   1000: "M"
 };
 
+var remainder = 0;
 var roman = "";
 var numbers =Object.keys(converterTable);
 
@@ -23,8 +24,10 @@ $(document).ready(function(){
     event.preventDefault();
     var numberInput = parseInt($("input#number").val());
 
-
-    if (numberInput === 5) {
+    if (numberInput > 5){
+      remainder = numberInput - 5;
+      roman = "V" + "I".repeat(remainder);
+    } else if (numberInput === 5) {
       roman = "V";
     } else if (numberInput === 4){
       roman = "IV";
