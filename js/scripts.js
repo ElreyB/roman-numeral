@@ -24,9 +24,14 @@ $(document).ready(function(){
     event.preventDefault();
     var numberInput = parseInt($("input#number").val());
 
-    if (numberInput > 10 && numberInput % 10 === 0){
-      var tenthPlace = numberInput / 10;
+
+
+    if (numberInput > 10 || numberInput % 10 === 0){
+      var difference = numberInput % 10;
+      console.log(difference);
+      var tenthPlace = numberInput % 10;
       roman = "X".repeat(tenthPlace);
+      roman += "I".repeat(difference);
     } else if (numberInput === 19){
       roman = "XIX";
     } else if (numberInput > 15){
