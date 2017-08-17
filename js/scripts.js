@@ -23,7 +23,12 @@ $(document).ready(function(){
     event.preventDefault();
     var numberInput = parseInt($("input#number").val());
 
-    if (numberInput % 1 === 0){
+
+    if (numberInput === 5) {
+      roman = "V";
+    } else if (numberInput === 4){
+      roman = "IV";
+    } else if (numberInput % 1 === 0){
       roman = "I".repeat(numberInput);
     }
 
