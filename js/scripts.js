@@ -27,7 +27,7 @@ function romanNumberalsConverter(arabicNumber){
   romanNumberals.forEach(function(romanNumberal){
 
     // while arabic number is greater than the value at the key in the hash
-    // Ex. arabicNumber = 349  >= romanNumberal
+    // Ex. arabicNumber = 349  >= romanNumberal 
     while(arabicNumber >= romanNumberalsTable[romanNumberal]){
       result += romanNumberal;
       arabicNumber -= romanNumberalsTable[romanNumberal];
