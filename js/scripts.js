@@ -1,5 +1,5 @@
 // hash to hold all the possible characters for roman numberals(keys) and arabic numbers(values)
-var romanNumberalsTable = {
+var romanNumeralsTable = {
    M: 1000,
   CM: 900,
    D: 500,
@@ -16,26 +16,39 @@ var romanNumberalsTable = {
 };
 
 // an array to hold the keys(roman numberals) of roman numberal table
-var romanNumberals = Object.keys(romanNumberalsTable);
-
-
+var romanNumerals = Object.keys(romanNumeralsTable);
+var sortedRomanNumerals = romanNumerals.slice().sort(function(a,b){
+  return b.length - a.length;
+})
 // function to to converter arabic numbers to roman numberals
-function romanNumberalsConverter(arabicNumber){
+function romanNumeralsConverter(arabicNumber){
   // empty string to hold the roman numberal that will be built base off the user input
   var result = "";
   // For each roman numberal in the roman numberals array
-  romanNumberals.forEach(function(romanNumberal){
+  romanNumerals.forEach(function(romanNumeral){
 
     // while arabic number is greater than the value at the key in the hash
-    // Ex. (arabicNumber === 349)  >= (romanNumberalTable[romanNumberal] === 1000, 900, 500, 400, 100, etc.)
-    while(arabicNumber >= romanNumberalsTable[romanNumberal]){
+    // Ex. (arabicNumber === 349)  >= (romanNumeralTable[romanNumeral] === 1000, 900, 500, 400, 100, etc.)
+    while(arabicNumber >= romanNumeralsTable[romanNumeral]){
       // add that key to the string result
-      result += romanNumberal;
+      result += romanNumeral;
       // inputted arabic number is substracted by the value of that key
-      arabicNumber -= romanNumberalsTable[romanNumberal];
+      arabicNumber -= romanNumeralsTable[romanNumeral];
     }
   });
   return result;
+}
+
+// Convert romam numberal to arabic number
+function arabicNumberConverter(romanNumeral = ""){
+  var result = 0;
+  return sortedRomanNumerals.reduce(function(arabicNumber, romanCharacter){
+    while(romanNumeral.includes(romanCharacter)){
+      result += romanNumeralsTable[romanCharacter];
+      romanNumeral = romanNumeral.replace(romanCharacter, "");
+    }
+    return result;
+  },0)
 }
 
 $(document).ready(function(){
@@ -45,7 +58,7 @@ $(document).ready(function(){
 
     var numberInput = parseInt($("input#number").val());
 
-    $("span.roman").text(romanNumberalsConverter(numberInput)).show();
+    $("span.roman").text(romanNumeralsConverter(numberInput)).show();
     $("input#number").val("");
   });
 
