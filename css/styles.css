@@ -55,5 +55,16 @@ button#clear-a, button#clear-r {
 }
 
 button#submit {
-  margin-left: 88px;
+  margin-left: 141px;
+}
+
+p {
+  display: none;
+  color: #ab1118;
+}
+
+div.line{
+  background-color: #333333;
+  width: 443px;
+  height: 3px;
 }

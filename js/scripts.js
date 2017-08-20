@@ -53,14 +53,16 @@ function arabicNumberConverter(romanNumeral = ""){
 
 $(document).ready(function(){
   $("span.roman, span.arabic").hide();
+
   $("form#number-form").submit(function(event){
     event.preventDefault();
     $(this).find(".form-group").removeClass("has-error");
-    $("span.roman").hide();
+    $("p.number-error").hide();
     var numberInput = parseInt($("input#number").val());
 
     if (isNaN(numberInput)){
       $(this).find(".form-group").addClass("has-error");
+      $("p.number-error").show();
       return;
     }
 
@@ -70,17 +72,18 @@ $(document).ready(function(){
 
   $("#clear-a").click(function(event){
     event.preventDefault();
-    $("span.roman").hide();
     $("span.roman").text("").hide();
   })
 
   $("form#arabic-form").submit(function(event){
     event.preventDefault();
     $(this).find(".form-group").removeClass("has-error");
+    $("p.roman-error").hide();
     var romanInput = $("input#roman").val().toUpperCase();
 
     if (romanInput.match(/[^MDCLXVI]/)){
       $(this).find(".form-group").addClass("has-error");
+      $("p.roman-error").show();
       return;
     }
     $("span.arabic").text(arabicNumberConverter(romanInput)).show();
