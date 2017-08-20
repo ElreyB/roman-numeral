@@ -18,11 +18,11 @@ var romanNumberalsTable = {
 // an array to hold the keys(roman numberals) of roman numberal table
 var romanNumberals = Object.keys(romanNumberalsTable);
 
-// empty string to hold the roman numberal that will be built base off the user input
-var result = "";
 
 // function to to converter arabic numbers to roman numberals
 function romanNumberalsConverter(arabicNumber){
+  // empty string to hold the roman numberal that will be built base off the user input
+  var result = "";
   // For each roman numberal in the roman numberals array
   romanNumberals.forEach(function(romanNumberal){
 
@@ -39,19 +39,18 @@ function romanNumberalsConverter(arabicNumber){
 }
 
 $(document).ready(function(){
-  $("span").hide();
+  $("span.roman").hide();
   $("form#number-form").submit(function(event){
     event.preventDefault();
 
     var numberInput = parseInt($("input#number").val());
 
-    $("span.roman").text(romanNumberalsConverter(numberInput));
-    $("span").show();
+    $("span.roman").text(romanNumberalsConverter(numberInput)).show();
     $("input#number").val("");
   });
 
   $("#clear").click(function(event){
     event.preventDefault();
-    $("span").hide().empty;
+    $("span.roman").text("").hide();
   })
 });
