@@ -27,9 +27,11 @@ function romanNumberalsConverter(arabicNumber){
   romanNumberals.forEach(function(romanNumberal){
 
     // while arabic number is greater than the value at the key in the hash
-    // Ex. arabicNumber = 349  >= romanNumberal
+    // Ex. (arabicNumber === 349)  >= (romanNumberalTable[romanNumberal] === 1000, 900, 500, 400, 100, etc.)
     while(arabicNumber >= romanNumberalsTable[romanNumberal]){
+      // add that key to the string result
       result += romanNumberal;
+      // inputted arabic number is substracted by the value of that key
       arabicNumber -= romanNumberalsTable[romanNumberal];
     }
   });
