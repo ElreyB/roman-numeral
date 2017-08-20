@@ -18,12 +18,23 @@
           <h1>Roman Numeral Converter</h1>
           <form id="number-form">
             <div class="form-group">
-              <label for="number">Enter number:</label>
-              <input id="number" type="number" class="form-control" min="1" max="9999999999" step="0.1">
+              <label for="number">Arabic Number:</label>
+              <input id="number" type="number" class="form-control" min="1" max="3999" step="1">
               <span class="roman"></span>
             </div>
             <button id="submit" type="submit" class="btn">Submit Your</button>
-            <button id="clear" class="btn">Clear Roman Number</button>
+            <button id="clear-a" class="btn">Clear Roman Number</button>
+          </form>
+          <br>
+          <h1>Arabic Number Converter</h1>
+          <form id="arabic-form">
+            <div class="form-group">
+              <label for="roman">Roman Numeral:</label>
+              <input id="roman" type="text" class="form-control">
+              <span class="arabic"></span>
+            </div>
+            <button id="submit" type="submit" class="btn">Submit Your</button>
+            <button id="clear-r" class="btn">Clear Arabic Number</button>
           </form>
         </div>
       </div>

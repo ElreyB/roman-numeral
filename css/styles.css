@@ -12,7 +12,7 @@ video#bgvid {
   background-size: cover;
 }
 
-input#number.form-control {
+input.form-control {
   width: 30%;
   display: inline-block;
   border: 2px solid grey;
@@ -49,7 +49,7 @@ span {
   border: 2px solid grey;
 }
 
-button#clear {
+button#clear-a, button#clear-r {
   float: right;
   margin-right: 4px;
 }

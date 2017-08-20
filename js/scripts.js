@@ -52,18 +52,43 @@ function arabicNumberConverter(romanNumeral = ""){
 }
 
 $(document).ready(function(){
-  $("span.roman").hide();
+  $("span.roman, span.arabic").hide();
   $("form#number-form").submit(function(event){
     event.preventDefault();
-
+    $(this).find(".form-group").removeClass("has-error");
+    $("span.roman").hide();
     var numberInput = parseInt($("input#number").val());
+
+    if (isNaN(numberInput)){
+      $(this).find(".form-group").addClass("has-error");
+      return;
+    }
 
     $("span.roman").text(romanNumeralsConverter(numberInput)).show();
     $("input#number").val("");
   });
 
-  $("#clear").click(function(event){
+  $("#clear-a").click(function(event){
     event.preventDefault();
+    $("span.roman").hide();
     $("span.roman").text("").hide();
+  })
+
+  $("form#arabic-form").submit(function(event){
+    event.preventDefault();
+    $(this).find(".form-group").removeClass("has-error");
+    var romanInput = $("input#roman").val().toUpperCase();
+
+    if (romanInput.match(/[^MDCLXVI]/)){
+      $(this).find(".form-group").addClass("has-error");
+      return;
+    }
+    $("span.arabic").text(arabicNumberConverter(romanInput)).show();
+    $("input#roman").val("");
+  });
+
+  $("#clear-r").click(function(event){
+    event.preventDefault();
+    $("span.arabic").text("").hide();
   })
 });
