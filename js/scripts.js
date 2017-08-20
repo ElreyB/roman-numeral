@@ -27,7 +27,7 @@ function romanNumberalsConverter(arabicNumber){
   romanNumberals.forEach(function(romanNumberal){
 
     // while arabic number is greater than the value at the key in the hash
-    // Ex. arabicNumber = 349  >= romanNumberal 
+    // Ex. arabicNumber = 349  >= romanNumberal
     while(arabicNumber >= romanNumberalsTable[romanNumberal]){
       result += romanNumberal;
       arabicNumber -= romanNumberalsTable[romanNumberal];
@@ -37,11 +37,19 @@ function romanNumberalsConverter(arabicNumber){
 }
 
 $(document).ready(function(){
+  $("span").hide();
   $("form#number-form").submit(function(event){
     event.preventDefault();
 
     var numberInput = parseInt($("input#number").val());
 
-    $(".roman").text(romanNumberalsConverter(numberInput));
+    $("span.roman").text(romanNumberalsConverter(numberInput));
+    $("span").show();
+    $("input#number").val("");
   });
+
+  $("#clear").click(function(event){
+    event.preventDefault();
+    $("span").hide().empty;
+  })
 });

@@ -8,6 +8,56 @@ video#bgvid {
   height: auto;
   z-index: -100;
   transform: translateX(-50%) translateY(-50%);
-  background: url(polina.jpg) no-repeat;
+  background: url(../img/background.jpg) no-repeat;
   background-size: cover;
+}
+
+input#number.form-control {
+  width: 30%;
+  display: inline-block;
+  border: 2px solid grey;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url(../img/panel_background.png);
+  font-weight: bold;
+
+}
+
+h1 {
+  margin-top: 0px;
+}
+
+
+span {
+  margin-left: 55px;
+  padding: 6px 16px;
+  background-color: white;
+  border-radius: 4px;
+  border: 2px solid grey;
+}
+
+form {
+
+}
+
+button#clear {
+  float: right;
+  margin-right: 4px;
+}
+
+button#submit {
+  margin-left: 88px;
 }
