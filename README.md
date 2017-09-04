@@ -53,7 +53,7 @@ _This page can converter an arabic number to roman numeral and vs versa_
 
 * _Clone this repository_
 * _In your terminal type "git clone (repository url)_
-* _Click on the index.html file to open in your updated browser of choice or click here_
+* _Click on the index.html file to open in your updated browser of choice or click here https://elreyb.github.io/roman-numeral/_
 
 ## Known Bugs 🐛🐛🐛
 
