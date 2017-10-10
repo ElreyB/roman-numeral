@@ -1,4 +1,5 @@
-var Converter = require('./../js/roman-numeral.js').converterModule;
+// var Converter = require('./../js/roman-numeral.js').converterModule;
+import { Converter } from './../js/roman-numeral.js';
 
 $(document).ready(function(){
   $("span.roman, span.arabic").hide();
