@@ -1,1 +1,113 @@
-!function r(e,n,o){function t(u,i){if(!n[u]){if(!e[u]){var f="function"==typeof require&&require;if(!i&&f)return f(u,!0);if(a)return a(u,!0);var s=new Error("Cannot find module '"+u+"'");throw s.code="MODULE_NOT_FOUND",s}var c=n[u]={exports:{}};e[u][0].call(c.exports,function(r){var n=e[u][1][r];return t(n||r)},c,c.exports,r,e,n,o)}return n[u].exports}for(var a="function"==typeof require&&require,u=0;u<o.length;u++)t(o[u]);return t}({1:[function(r,e,n){function o(){}var t={M:1e3,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},a=Object.keys(t),u=a.slice().sort(function(r,e){return e.length-r.length});o.prototype.romanNumeralsConverter=function(r){var e="";return a.forEach(function(n){for(;r>=t[n];)e+=n,r-=t[n]}),e},o.prototype.arabicNumberConverter=function(r){var e=0;return u.reduce(function(n,o){for(;r.includes(o);)e+=t[o],r=r.replace(o,"");return e},0)},n.converterModule=o},{}],2:[function(r,e,n){var o=r("./../js/roman-numeral.js").converterModule;$(document).ready(function(){$("span.roman, span.arabic").hide();var r=new o;$("form#number-form").submit(function(e){e.preventDefault(),$(this).find(".form-group").removeClass("has-error"),$("p.number-error").hide();var n=parseInt($("input#number").val());if(isNaN(n))return $(this).find(".form-group").addClass("has-error"),void $("p.number-error").show();$("span.roman").text(r.romanNumeralsConverter(n)).show(),$("input#number").val("")}),$("#clear-a").click(function(r){r.preventDefault(),$("span.roman").text("").hide()}),$("form#arabic-form").submit(function(e){e.preventDefault(),$(this).find(".form-group").removeClass("has-error"),$("p.roman-error").hide();var n=$("input#roman").val().toUpperCase();if(n.match(/[^MDCLXVI]/))return $(this).find(".form-group").addClass("has-error"),void $("p.roman-error").show();$("span.arabic").text(r.arabicNumberConverter(n)).show(),$("input#roman").val("")}),$("#clear-r").click(function(r){r.preventDefault(),$("span.arabic").text("").hide()})})},{"./../js/roman-numeral.js":1}]},{},[2]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+// hash to hold all the possible characters for roman numberals(keys) and arabic numbers(values)
+var romanNumeralsTable = {
+   M: 1000,
+  CM: 900,
+   D: 500,
+  CD: 400,
+   C: 100,
+  XC: 90,
+   L: 50,
+  XL: 40,
+   X: 10,
+  IX: 9,
+   V: 5,
+  IV: 4,
+   I: 1
+};
+
+// an array to hold the keys(roman numberals) of roman numberal table
+var romanNumerals = Object.keys(romanNumeralsTable);
+var sortedRomanNumerals = romanNumerals.slice().sort(function(a,b){
+  return b.length - a.length;
+})
+
+function Converter(){
+
+}
+// function to to converter arabic numbers to roman numberals
+Converter.prototype.romanNumeralsConverter = function(arabicNumber){
+  // empty string to hold the roman numberal that will be built base off the user input
+  var result = "";
+  // For each roman numberal in the roman numberals array
+  romanNumerals.forEach(function(romanNumeral){
+
+    // while arabic number is greater than the value at the key in the hash
+    // Ex. (arabicNumber === 349)  >= (romanNumeralTable[romanNumeral] === 1000, 900, 500, 400, 100, etc.)
+    while(arabicNumber >= romanNumeralsTable[romanNumeral]){
+      // add that key to the string result
+      result += romanNumeral;
+      // inputted arabic number is substracted by the value of that key
+      arabicNumber -= romanNumeralsTable[romanNumeral];
+    }
+  });
+  return result;
+}
+
+// Convert romam numberal to arabic number
+Converter.prototype.arabicNumberConverter = function (romanNumeral){
+  var result = 0;
+  return sortedRomanNumerals.reduce(function(arabicNumber, romanCharacter){
+    while(romanNumeral.includes(romanCharacter)){
+      result += romanNumeralsTable[romanCharacter];
+      romanNumeral = romanNumeral.replace(romanCharacter, "");
+    }
+    return result;
+  },0)
+}
+
+
+exports.converterModule = Converter;
+
+},{}],2:[function(require,module,exports){
+var Converter = require('./../js/roman-numeral.js').converterModule;
+
+$(document).ready(function(){
+  $("span.roman, span.arabic").hide();
+
+  var converter = new Converter();
+
+  $("form#number-form").submit(function(event){
+    event.preventDefault();
+    $(this).find(".form-group").removeClass("has-error");
+    $("p.number-error").hide();
+
+    var numberInput = parseInt($("input#number").val());
+
+    if (isNaN(numberInput)){
+      $(this).find(".form-group").addClass("has-error");
+      $("p.number-error").show();
+      return;
+    }
+
+    $("span.roman").text(converter.romanNumeralsConverter(numberInput)).show();
+    $("input#number").val("");
+  });
+
+  $("#clear-a").click(function(event){
+    event.preventDefault();
+    $("span.roman").text("").hide();
+  })
+
+  $("form#arabic-form").submit(function(event){
+    event.preventDefault();
+    $(this).find(".form-group").removeClass("has-error");
+    $("p.roman-error").hide();
+    var romanInput = $("input#roman").val().toUpperCase();
+
+    if (romanInput.match(/[^MDCLXVI]/)){
+      $(this).find(".form-group").addClass("has-error");
+      $("p.roman-error").show();
+      return;
+    }
+    $("span.arabic").text(converter.arabicNumberConverter(romanInput)).show();
+    $("input#roman").val("");
+  });
+
+  $("#clear-r").click(function(event){
+    event.preventDefault();
+    $("span.arabic").text("").hide();
+  })
+});
+
+},{"./../js/roman-numeral.js":1}]},{},[2]);

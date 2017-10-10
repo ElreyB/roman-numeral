@@ -19,7 +19,7 @@ var romanNumeralsTable = {
 var romanNumerals = Object.keys(romanNumeralsTable);
 var sortedRomanNumerals = romanNumerals.slice().sort(function(a,b){
   return b.length - a.length;
-})
+});
 // function to to converter arabic numbers to roman numberals
 function romanNumeralsConverter(arabicNumber){
   // empty string to hold the roman numberal that will be built base off the user input
@@ -40,7 +40,7 @@ function romanNumeralsConverter(arabicNumber){
 }
 
 // Convert romam numberal to arabic number
-function arabicNumberConverter(romanNumeral = ""){
+function arabicNumberConverter(romanNumeral){
   var result = 0;
   return sortedRomanNumerals.reduce(function(arabicNumber, romanCharacter){
     while(romanNumeral.includes(romanCharacter)){
