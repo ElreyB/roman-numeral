@@ -19,7 +19,7 @@ var romanNumeralsTable = {
 var romanNumerals = Object.keys(romanNumeralsTable);
 var sortedRomanNumerals = romanNumerals.slice().sort(function(a,b){
   return b.length - a.length;
-})
+});
 
 function Converter(){
 
@@ -41,10 +41,10 @@ Converter.prototype.romanNumeralsConverter = function(arabicNumber){
     }
   });
   return result;
-}
+};
 
 // Convert romam numberal to arabic number
-Converter.prototype.arabicNumberConverter = function (romanNumeral = ""){
+Converter.prototype.arabicNumberConverter = function (romanNumeral){
   var result = 0;
   return sortedRomanNumerals.reduce(function(arabicNumber, romanCharacter){
     while(romanNumeral.includes(romanCharacter)){
@@ -52,8 +52,8 @@ Converter.prototype.arabicNumberConverter = function (romanNumeral = ""){
       romanNumeral = romanNumeral.replace(romanCharacter, "");
     }
     return result;
-  },0)
-}
+  },0);
+};
 
 
 exports.converterModule = Converter;

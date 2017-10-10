@@ -25,7 +25,7 @@ $(document).ready(function(){
   $("#clear-a").click(function(event){
     event.preventDefault();
     $("span.roman").text("").hide();
-  })
+  });
 
   $("form#arabic-form").submit(function(event){
     event.preventDefault();
@@ -45,5 +45,5 @@ $(document).ready(function(){
   $("#clear-r").click(function(event){
     event.preventDefault();
     $("span.arabic").text("").hide();
-  })
+  });
 });

@@ -17,10 +17,14 @@
   },
   "homepage": "https://github.com/ElreyB/roman-numeral#readme",
   "devDependencies": {
+    "bower-files": "^4.0.0",
     "browserify": "^14.4.0",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.0.4",
     "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.5",
     "vinyl-source-stream": "^1.1.0"
   }
 }
