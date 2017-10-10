@@ -20,8 +20,12 @@ var romanNumerals = Object.keys(romanNumeralsTable);
 var sortedRomanNumerals = romanNumerals.slice().sort(function(a,b){
   return b.length - a.length;
 })
+
+function Converter(){
+
+}
 // function to to converter arabic numbers to roman numberals
-function romanNumeralsConverter(arabicNumber){
+Converter.prototype.romanNumeralsConverter = function(arabicNumber){
   // empty string to hold the roman numberal that will be built base off the user input
   var result = "";
   // For each roman numberal in the roman numberals array
@@ -40,7 +44,7 @@ function romanNumeralsConverter(arabicNumber){
 }
 
 // Convert romam numberal to arabic number
-function arabicNumberConverter(romanNumeral = ""){
+Converter.prototype.arabicNumberConverter = function (romanNumeral = ""){
   var result = 0;
   return sortedRomanNumerals.reduce(function(arabicNumber, romanCharacter){
     while(romanNumeral.includes(romanCharacter)){
@@ -51,47 +55,5 @@ function arabicNumberConverter(romanNumeral = ""){
   },0)
 }
 
-$(document).ready(function(){
-  $("span.roman, span.arabic").hide();
 
-  $("form#number-form").submit(function(event){
-    event.preventDefault();
-    $(this).find(".form-group").removeClass("has-error");
-    $("p.number-error").hide();
-    var numberInput = parseInt($("input#number").val());
-
-    if (isNaN(numberInput)){
-      $(this).find(".form-group").addClass("has-error");
-      $("p.number-error").show();
-      return;
-    }
-
-    $("span.roman").text(romanNumeralsConverter(numberInput)).show();
-    $("input#number").val("");
-  });
-
-  $("#clear-a").click(function(event){
-    event.preventDefault();
-    $("span.roman").text("").hide();
-  })
-
-  $("form#arabic-form").submit(function(event){
-    event.preventDefault();
-    $(this).find(".form-group").removeClass("has-error");
-    $("p.roman-error").hide();
-    var romanInput = $("input#roman").val().toUpperCase();
-
-    if (romanInput.match(/[^MDCLXVI]/)){
-      $(this).find(".form-group").addClass("has-error");
-      $("p.roman-error").show();
-      return;
-    }
-    $("span.arabic").text(arabicNumberConverter(romanInput)).show();
-    $("input#roman").val("");
-  });
-
-  $("#clear-r").click(function(event){
-    event.preventDefault();
-    $("span.arabic").text("").hide();
-  })
-});
+exports.converterModule = Converter;

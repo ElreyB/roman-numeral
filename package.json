@@ -1,0 +1,24 @@
+{
+  "name": "roman-numeral",
+  "version": "1.0.0",
+  "description": "#### _Roman Numeral Converter: Epicodus exercise, 08.20.2017_",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElreyB/roman-numeral.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElreyB/roman-numeral/issues"
+  },
+  "homepage": "https://github.com/ElreyB/roman-numeral#readme",
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "gulp": "^3.9.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
