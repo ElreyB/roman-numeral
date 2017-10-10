@@ -18,6 +18,7 @@ var lib = require('bower-files')({
     }
   }
 });
+var browserSync = require('browser-sync').create();
 
 function createErrorHandler(name) {
   return function (err) {
@@ -69,13 +70,9 @@ gulp.task('jshint', function(){
 
 gulp.task('bowerJS', function () {
   return gulp.src(lib.ext('js').files)
-  .on('error', createErrorHandler('gulp.src'))
     .pipe(concat('vendor.min.js'))
-    .on('error', createErrorHandler('concat'))
     .pipe(uglify())
-    .on('error', createErrorHandler('uglify'))
     .pipe(gulp.dest('./build/js'))
-    .on('error', createErrorHandler('gulp.dest'));
 });
 
 gulp.task('bowerCSS', function () {
@@ -85,3 +82,23 @@ gulp.task('bowerCSS', function () {
 });
 
 gulp.task('bower', ['bowerJS', 'bowerCSS']);
+
+gulp.task('serve', function() {
+  browserSync.init({
+    server: {
+      baseDir: "./",
+      index: "index.html"
+    }
+  });
+
+  gulp.watch(['js/*.js'], ['jsBuild']);
+  gulp.watch(['bower.json'], ['bowerBuild']);
+});
+
+gulp.task('jsBuild', ['jsBrowserify', 'jshint'], function(){
+  browserSync.reload();
+});
+
+gulp.task('bowerBuild', ['bower'], function(){
+  browserSync.reload();
+});
