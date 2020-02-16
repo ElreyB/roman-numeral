@@ -1,4 +1,4 @@
-var romanNumeralsTable = {
+const romanNumeralsTable = {
   M: 1000,
   CM: 900,
   D: 500,
@@ -14,12 +14,12 @@ var romanNumeralsTable = {
   I: 1
 };
 
-var romanNumerals = Object.keys(romanNumeralsTable);
-var sortedRomanNumerals = romanNumerals.slice().sort(function(a, b) {
+const romanNumerals = Object.keys(romanNumeralsTable);
+const sortedRomanNumerals = romanNumerals.slice().sort(function(a, b) {
   return b.length - a.length;
 });
 function romanNumeralsConverter(arabicNumber) {
-  var result = "";
+  const result = "";
   romanNumerals.forEach(function(romanNumeral) {
     while (arabicNumber >= romanNumeralsTable[romanNumeral]) {
       result += romanNumeral;
@@ -30,7 +30,7 @@ function romanNumeralsConverter(arabicNumber) {
 }
 
 function arabicNumberConverter(romanNumeral = "") {
-  var result = 0;
+  const result = 0;
   return sortedRomanNumerals.reduce(function(arabicNumber, romanCharacter) {
     while (romanNumeral.includes(romanCharacter)) {
       result += romanNumeralsTable[romanCharacter];
@@ -49,7 +49,7 @@ $(document).ready(function() {
       .find(".form-group")
       .removeClass("has-error");
     $("p.number-error").hide();
-    var numberInput = parseInt($("input#number").val());
+    const numberInput = parseInt($("input#number").val());
 
     if (isNaN(numberInput)) {
       $(this)
@@ -78,7 +78,7 @@ $(document).ready(function() {
       .find(".form-group")
       .removeClass("has-error");
     $("p.roman-error").hide();
-    var romanInput = $("input#roman")
+    const romanInput = $("input#roman")
       .val()
       .toUpperCase();
 
