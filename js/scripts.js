@@ -19,24 +19,22 @@ const sortedRomanNumerals = romanNumerals.slice().sort(function(a, b) {
   return b.length - a.length;
 });
 function romanNumeralsConverter(arabicNumber) {
-  const result = "";
-  romanNumerals.forEach(function(romanNumeral) {
+  return romanNumerals.reduce(function(result, romanNumeral) {
     while (arabicNumber >= romanNumeralsTable[romanNumeral]) {
       result += romanNumeral;
       arabicNumber -= romanNumeralsTable[romanNumeral];
     }
-  });
-  return result;
+    return result;
+  }, "");
 }
 
-function arabicNumberConverter(romanNumeral = "") {
-  const result = 0;
+function arabicNumberConverter(romanNumeral) {
   return sortedRomanNumerals.reduce(function(arabicNumber, romanCharacter) {
     while (romanNumeral.includes(romanCharacter)) {
-      result += romanNumeralsTable[romanCharacter];
+      arabicNumber += romanNumeralsTable[romanCharacter];
       romanNumeral = romanNumeral.replace(romanCharacter, "");
     }
-    return result;
+    return arabicNumber;
   }, 0);
 }
 
