@@ -1,0 +1,23 @@
+{
+  "name": "roman-numeral",
+  "version": "1.0.0",
+  "description": "Application can converter an arabic number to roman numeral and vs versa",
+  "main": "index.js",
+  "scripts": {
+    "start": "open-cli $(pwd)/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElreyB/roman-numeral.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElreyB/roman-numeral/issues"
+  },
+  "homepage": "https://github.com/ElreyB/roman-numeral#readme",
+  "dependencies": {
+    "open-cli": "^5.0.0"
+  }
+}
