@@ -1,59 +1,44 @@
-# _Roman and Arabic Number Converter_
+# _[Roman and Arabic Number Converter](https://elreyb.github.io/roman-numeral/)_
 
 #### _Roman Numeral Converter: Epicodus exercise, 08.20.2017_
 
 ## Description
 
-_This page can converter an arabic number to roman numeral and vs versa_
+_Application can converter an arabic number to roman numeral and vs versa_
 
 ## Specs
 
-* _Blank input will return an error message_
-  * Example Input: ""
-  * Example Output: not a valid input
-* -Add the value of all the symbols_
-  * Example Input: 6
-  * Example Input: VI
-* Cannot take a number higher than 3,999
-  Example Input: 4,000
-  Example Output: value must be less than or equal to 3,999
-* _Separate ones_
-  * Example Input: 1
-  * Example Output: I
-* _Separate tens_
-  * Example Input: 10
-  * Example Output: X
-* _Separate by fifty_
-  * Example input: 50
-  * Example Output: L
-* _Separate hundreds_
-  * Example Input: 100
-  * Example Output: C
-* _Separate five hundreds_
-  * Example Input: 500
-  * Example Output: D
-* _Separate thousands_
-  * Example Input: 1000
-  * Example Output: M
-* _Identify special characters to give correct output_
-  * Example Input: 4
-  * Example Output: IV
-  * Example Input: 9
-  * Example Output: IX
-  * Example Input: 40
-  * Example Output: XL
-  * Example Input: 90
-  * Example Output: XC
-  * Example Input: 400
-  * Example Output: CD
-  * Example Input: 900
-  * Example Output: CM
+| Value Type  | Input  | Output  |
+|---|---|---|
+|  Blank input will return an error message | ""  |  not a valid input |
+| Add the value of all the symbols  | 6  | VI  |
+| Cannot take a number higher than 3,999  | 4,000  | value must be less than or equal to 3,999  |
+| Separate ones  | 1  | I  |
+| Separate tens  |  10  | X  |
+| Separate by fifty  | 50  |  L  |
+|  Separate hundreds | 100  | C  |
+| Separate five hundreds  | 500  | D  |
+| Separate thousands  | 1000  | M  |
+
+### Identify special characters to give correct output
+
+| Input| Output|
+|---|---|
+| 4  | IV  |
+| 9  | IX  |
+| 40  | XL  |
+| 90  | XC  |
+| 400  | CD  |
+| 900  | CM  |
+
 
 ## Setup/Installation Requirements
 
+### Development
+
 * _Clone this repository_
 * _In your terminal type "git clone (repository url)_
-* _Click on the index.html file to open in your updated browser of choice or click here https://elreyb.github.io/roman-numeral/_
+* _Click on the index.html file to open in your browser of choice_
 
 ## Known Bugs 🐛🐛🐛
 
