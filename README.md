@@ -2,6 +2,8 @@
 
 #### _Roman Numeral Converter: Epicodus exercise, 08.20.2017_
 
+![roman-app](https://user-images.githubusercontent.com/20192033/74903411-ae539a80-535d-11ea-804f-332957750035.gif)
+
 ## Description
 
 _Application can converter an arabic number to roman numeral and vs versa_
