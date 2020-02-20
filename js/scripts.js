@@ -15,11 +15,12 @@ const romanNumeralsTable = {
 };
 
 const romanNumerals = Object.keys(romanNumeralsTable);
-const sortedRomanNumerals = romanNumerals.slice().sort(function(a, b) {
-  return b.length - a.length;
-});
+const sortedRomanNumerals = [...romanNumerals].sort(
+  (a, b) => b.length - a.length
+);
+
 function romanNumeralsConverter(arabicNumber) {
-  return romanNumerals.reduce(function(result, romanNumeral) {
+  return romanNumerals.reduce((result, romanNumeral) => {
     while (arabicNumber >= romanNumeralsTable[romanNumeral]) {
       result += romanNumeral;
       arabicNumber -= romanNumeralsTable[romanNumeral];
@@ -29,7 +30,7 @@ function romanNumeralsConverter(arabicNumber) {
 }
 
 function arabicNumberConverter(romanNumeral) {
-  return sortedRomanNumerals.reduce(function(arabicNumber, romanCharacter) {
+  return sortedRomanNumerals.reduce((arabicNumber, romanCharacter) => {
     while (romanNumeral.includes(romanCharacter)) {
       arabicNumber += romanNumeralsTable[romanCharacter];
       romanNumeral = romanNumeral.replace(romanCharacter, "");
@@ -38,10 +39,10 @@ function arabicNumberConverter(romanNumeral) {
   }, 0);
 }
 
-$(document).ready(function() {
+$(document).ready(() => {
   $("span.roman, span.arabic").hide();
 
-  $("form#number-form").submit(function(event) {
+  $("form#number-form").submit(event => {
     event.preventDefault();
     $(this)
       .find(".form-group")
@@ -63,14 +64,14 @@ $(document).ready(function() {
     $("input#number").val("");
   });
 
-  $("#clear-a").click(function(event) {
+  $("#clear-a").click(event => {
     event.preventDefault();
     $("span.roman")
       .text("")
       .hide();
   });
 
-  $("form#arabic-form").submit(function(event) {
+  $("form#arabic-form").submit(event => {
     event.preventDefault();
     $(this)
       .find(".form-group")
@@ -93,7 +94,7 @@ $(document).ready(function() {
     $("input#roman").val("");
   });
 
-  $("#clear-r").click(function(event) {
+  $("#clear-r").click(event => {
     event.preventDefault();
     $("span.arabic")
       .text("")
